@@ -1,0 +1,102 @@
+.testimonial-component {
+    overflow-x: clip;
+    margin: 5rem 0rem;
+    position: relative;
+    .container {
+        overflow: hidden;
+    }
+
+    .swiper.testimonialSlider {
+        overflow: visible;
+    }
+    .swiper-slide {
+        height: auto;
+        box-sizing: border-box;
+        .testimonial-container {
+            padding: 3rem;
+            border-top: 8px solid $secondary;
+            box-shadow: 1px 6px 12px 0px rgb(0 0 0 / 5%);
+            height: 100%;
+            border-radius: 50px;
+            @media(max-width: 992px){
+                padding: 1.5rem;
+            }
+
+
+            .rating {
+                margin-bottom: 1rem;
+                text-align: center;
+            }
+            .content {
+                margin-bottom: 1rem;
+                font-weight: 700;
+                font-size: 20px;
+                @media(max-width: 992px){
+                    font-size: 17px;
+                }
+            }
+            .author {
+                .name {
+                    display: block;
+                    font-weight: 600;
+                }
+                .extra_text {
+                    display: block;
+                }
+            }
+        }
+    }
+
+    .intro-content { 
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 5rem;
+        gap: 20px;
+        flex-wrap: wrap;
+        .content {
+            max-width: 830px;
+        }
+    }
+
+    .testimonial-navigation {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 2rem;
+        .swiper-pagination {
+            width: auto;
+            inset: 0;
+        }
+        .slider-arrows {
+            display: flex;
+            gap: 10px;
+        }
+
+        .swiper-pagination {
+            position: relative;
+        }
+        .prev_slide,
+        .next_slide {
+            border: 1px solid black;
+            border-radius: 100%;
+            height: 50px;
+            width: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all .3s;
+            &.flip {
+                transform: rotate(180deg);
+            }
+            svg {
+                height: 100%;
+            }
+            &:hover {
+                cursor: pointer;
+                background: $black;
+                border-color: $black;
+                color: $white;
+            }
+        }
+    }
+} 

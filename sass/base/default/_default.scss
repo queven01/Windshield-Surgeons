@@ -1,0 +1,10 @@
+.container {
+    @media(max-width: 1500px){
+        padding: 0 5% !important;
+    }
+    &.small-container {
+        max-width: 860px;
+    }
+}
+
+ 

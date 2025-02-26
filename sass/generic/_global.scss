@@ -1,0 +1,46 @@
+.site-main {
+    padding-top: 5rem;
+}
+
+.wp-block-search__inside-wrapper {
+    padding: 0;
+    border: 0;
+}
+input[type=search] {
+    padding: 10px 20px !important;
+}
+
+.wp-block-categories-list,
+.wp-block-latest-posts__list {
+    padding: 0px;
+    list-style-type: none;
+    li {
+        margin-bottom: 10px;
+        a {
+            text-decoration: none;
+            color: $black;
+            display: inline-block;
+
+            &:after {
+                content: "";
+                display: block;
+                margin: 0 auto;
+                width: 0;
+                height: 2px;
+                background-color: $primary;
+                -webkit-transition: opacity .3s ease,width .3s ease;
+                -moz-transition: opacity .3s ease,width .3s ease;
+                -o-transition: opacity .3s ease,width .3s ease;
+                transition: opacity .3s ease,width .3s ease;
+                -ms-transition: opacity .3s ease,width .3s ease;
+            }
+
+            &:hover {
+                color: $primary;
+                &:after {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

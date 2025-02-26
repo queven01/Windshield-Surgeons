@@ -1,0 +1,86 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	clear: both;
+	margin-top: 0px;
+}
+
+h1 {
+	font-size: 46px;
+	font-weight: 600;
+	font-style: normal;
+    margin-bottom: 1.5rem;
+    line-height: 1;
+
+	@media(max-width: 992px){
+		font-size: 36px;
+	}
+}
+
+h2 {
+	font-size: 40px;
+	font-weight: 600;
+	font-style: normal;
+    margin-bottom: 1.5rem;
+    line-height: 1;
+	@media(max-width: 992px){
+		font-size: 32px;
+	}
+	@media(max-width:475px){
+		font-size: 25px;
+	}
+}
+
+h3 {
+	font-size: 25px;
+	font-weight: 700;
+	font-style: normal;
+    margin-bottom: 1rem;
+    line-height: 1;
+	@media(max-width: 992px){
+		font-size: 20px;
+	}
+	@media(max-width:475px){
+		font-size: 18px;
+	}
+}
+
+h4 {
+	font-size: 20px;
+	font-weight: 600;
+	font-style: normal;
+    margin-bottom: 1rem;
+    line-height: 1;
+	@media(max-width: 992px){
+		font-size: 20px;
+	}
+	@media(max-width:475px){
+		font-size: 18px;
+	}
+}
+
+.intro-content {
+	.section-sub-title {
+		color: $secondary;
+		margin-bottom: 10px;
+		font-weight: 700;
+		text-transform: uppercase;
+	}
+	.section-title {
+		font-weight: 700;
+	}
+	.line {
+		&:before {
+			content: "";
+			height: 3px;
+			width: 60px;
+			display: block;
+			background: $secondary;
+			margin-bottom: .75rem;
+		}
+	}
+
+}
