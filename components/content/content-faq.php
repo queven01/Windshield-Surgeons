@@ -37,4 +37,34 @@
             <?php endforeach;?>
         </div>
     </div>
+
+    <!-- Schema Markup -->
+    <?php if ($grid_items) : ?>
+        <?php 
+        $faq_schema = [
+            "@context" => "https://schema.org",
+            "@type" => "FAQPage",
+            "mainEntity" => []
+        ];
+        foreach($grid_items as $key => $item):
+            $title = $item['title'];
+            $content = $item['content']; 
+            $icon = $item['icon']; 
+
+            $faq_schema['mainEntity'][] = [
+                "@type" => "Question",
+                "name" => $title,
+                "acceptedAnswer" => [
+                    "@type" => "Answer",
+                    "text" => $content
+                ]
+            ];
+        endforeach;
+        ?>
+        <script type="application/ld+json">
+            <?= json_encode($faq_schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>
+        </script>
+    <?php endif; ?>
+
 </section>
+

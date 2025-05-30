@@ -25,6 +25,6 @@
             </div>
         <?php endif; ?>
     </div>
-    <img class="background-image" src="<?php echo $image['url']; ?>">
+    <img class="background-image" src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>">
 </section>
 <?php endif; ?>

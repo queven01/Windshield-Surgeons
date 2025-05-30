@@ -1,0 +1,53 @@
+.gm-style-iw {
+    padding: 1rem !important;
+    .gm-style-iw-chr {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+}
+.rank-math-local-map-wrapper{
+    border-radius: 35px;
+    overflow: hidden;
+    padding: 20px;
+    background: $tertiary;
+    .rank-math-infobox-wrapper {  
+        h5 {
+            font-size: 13px;
+            margin-bottom: 5px;
+            a {
+                font-size: 1rem;
+                padding-bottom: 5px;
+            }
+        }
+        p {
+            margin: 0px;
+        }
+        address {
+            font-style: normal;
+            font-size: 12px;
+        }
+    }
+}
+.rank-math-business-wrapper {
+    h5 {
+        margin-top: 10px;
+        margin-bottom: 5px;
+    }
+    address {
+        font-style: normal;
+    }
+    .rank-math-business-opening-hours {
+        max-width: 400px; 
+        .rank-math-opening-hours {
+            border-bottom: 1px solid $tertiary-light;
+            padding: 5px 0;
+            .rank-math-opening-days {
+                font-weight: 600;
+            }
+            .rank-math-opening-time {
+                margin-left: 10px;
+            }
+        }
+    }
+}

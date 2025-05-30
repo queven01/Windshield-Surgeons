@@ -23,6 +23,8 @@
  $cta_btn_1 = $call_to_action['button_1'];
  $cta_btn_2 = $call_to_action['button_2'];
 
+ $locations = get_nav_menu_locations();
+
 ?>
 
 	<footer id="footer" class="site-footer">
@@ -53,47 +55,75 @@
 						</div>
 						<?php endif; ?>
 						<div class="col-lg-3 footer-menu">
-							<h4>Locations</h4>
 							<?php
-								wp_nav_menu(
-									array(
-										'theme_location' => 'footer-1',
-										'depth' => 1
-									)
-								);
+								if(has_nav_menu('footer-1')){
+									if (isset($locations['footer-1'])) {
+										$menu = wp_get_nav_menu_object($locations['footer-1']);
+										if ($menu) {
+											echo '<h4>'.$menu->name.'</h4>';
+										}
+									}
+									wp_nav_menu(
+										array(
+											'theme_location' => 'footer-1',
+											'depth' => 1
+										)
+									);
+								}
 							?>
 						</div>
 						<div class="col-lg-3 footer-menu">
-							<h4>Services</h4>
 							<?php
-								wp_nav_menu(
-									array(
-										'theme_location' => 'footer-2',
-										'depth' => 1
-									)
-								);
+								if(has_nav_menu('footer-2')){
+									if (isset($locations['footer-2'])) {
+										$menu = wp_get_nav_menu_object($locations['footer-2']);
+										if ($menu) {
+											echo '<h4>'.$menu->name.'</h4>';
+										}
+									}
+									wp_nav_menu(
+										array(
+											'theme_location' => 'footer-2',
+											'depth' => 1
+										)
+									);
+								}
 							?>
 						</div>
 						<div class="col-lg-3 footer-menu">
-							<h4>About</h4>
 							<?php
-								wp_nav_menu(
-									array(
-										'theme_location' => 'footer-3',
-										'depth' => 1
-									)
-								);
+								if(has_nav_menu('footer-3')){
+									if (isset($locations['footer-3'])) {
+										$menu = wp_get_nav_menu_object($locations['footer-3']);
+										if ($menu) {
+											echo '<h4>'.$menu->name.'</h4>';
+										}
+									}
+									wp_nav_menu(
+										array(
+											'theme_location' => 'footer-3',
+											'depth' => 1
+										)
+									);
+								}
 							?>
 						</div>
 						<div class="col-lg-3 footer-menu">
-							<h4>Windshield Education</h4>
 							<?php
-								wp_nav_menu(
-									array(
-										'theme_location' => 'footer-4',
-										'depth' => 1
-									)
-								);
+								if(has_nav_menu('footer-4')){
+									if (isset($locations['footer-4'])) {
+										$menu = wp_get_nav_menu_object($locations['footer-4']);
+										if ($menu) {
+											echo '<h4>'.$menu->name.'</h4>';
+										}
+									}
+									wp_nav_menu(
+										array(
+											'theme_location' => 'footer-4',
+											'depth' => 1
+										)
+									);
+								}
 							?>
 						</div>
 					</div>
@@ -104,12 +134,14 @@
 						© <?php echo date("Y"); ?> <?php bloginfo( 'name' ); ?>. All Rights Reserved 
 
 						<?php 
-							wp_nav_menu(
-								array(
-									'theme_location' => 'lower-footer',
-									'depth' => 1
-								)
-							);
+							if(has_nav_menu('lower-footer')){
+								wp_nav_menu(
+									array(
+										'theme_location' => 'lower-footer',
+										'depth' => 1
+									)
+								);
+							}
 						?>
 					</div>
 					<div class="social_media">
@@ -123,9 +155,6 @@
 							if($twitter){ 
 								echo '<a target="_blank" href="'.$twitter.'">'.file_get_contents( get_template_directory_uri() . '/assets/icons/twitter-x.svg' ).'</a>';
 							}
-							// if($tik_tok){ 
-							// 	echo '<a target="_blank" href="'.$tik_tok.'">'.file_get_contents( get_template_directory_uri() . '/assets/icons/tic-toc.svg' ).'</a>';
-							// }
 						?>
 					</div>
 			</div>

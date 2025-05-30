@@ -35,7 +35,7 @@
                                 <h3><?php echo $title;?></h3>
                             </div>
                             <div class="image-container">
-                                <img class="bg-image" src="<?php echo $banner_image; ?>" alt="">
+                                <img class="bg-image" src="<?php echo $banner_image; ?>" alt="<?php echo $image['alt']; ?>">
                             </div>
                         </a>
                     </div>

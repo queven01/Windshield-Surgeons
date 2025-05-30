@@ -21,7 +21,7 @@
 <div class="card default wow animate__animated animate__fadeInUp" data-wow-offset="<?php echo $offset; ?>">
     <div class="image-container">
         <?php if($button){echo '<a href="'.$button.'">';}?>
-            <img src="<?php echo $image['url']; ?>" alt="">
+            <img src="<?php echo $image['sizes']['large']; ?>" alt="<?php echo $image['alt']; ?>">
         <?php if($button){echo '</a>';}?>
     </div>
     <div class="content">

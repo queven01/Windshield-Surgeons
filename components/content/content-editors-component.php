@@ -27,14 +27,16 @@
 <?php if($content_columns): ?>
 <section <?php echo 'id="'.$section_id.'"'?> class="content-section editors" >
     <div class="container <?php if($small_container){echo 'small-container';};?>">
-        <div class="intro-content">
-            <span class="line"></span>
-            <?php 
-                if($sub_title) echo '<h4 class="section-sub-title">'. $sub_title .'</h4>';
-                if($title) echo '<h2 class="section-title">'. $title .'</h2>';
-                if($content) echo '<div class="description">'. $content .'</div>';
-            ?>
-        </div>
+        <?php if($title || $sub_title || $content): ?>
+            <div class="intro-content">
+                <span class="line"></span>
+                <?php 
+                    if($sub_title) echo '<h4 class="section-sub-title">'. $sub_title .'</h4>';
+                    if($title) echo '<h2 class="section-title">'. $title .'</h2>';
+                    if($content) echo '<div class="description">'. $content .'</div>';
+                ?>
+            </div>
+        <?php endif; ?>
         <div class="row g-5 <?php if($vertical_align_center){echo 'vertical-align';} ?>">
             <?php foreach($content_columns as $card): 
                 echo $column_Div;?>

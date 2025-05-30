@@ -17,8 +17,10 @@
 
     if($isBannerImage){
         $banner_image = get_field('image')['url'];
+        $banner_image_alt = get_field('image')['alt'];
     } else {
         $banner_image = get_the_post_thumbnail_url();
+        $banner_image_alt = '';
     }
 ?>
 
@@ -37,6 +39,6 @@
             Your browser does not support the video tag.
         </video>
     <?php endif; ?>
-    <img class="banner-bg-image" src="<?php echo $banner_image; ?>" alt="">
+    <img class="banner-bg-image" src="<?php echo $banner_image; ?>" alt="<?php echo $banner_image_alt; ?>">
     <?php if($snow_effect){ echo '<div class="snow"></div>';}?>
 </section>

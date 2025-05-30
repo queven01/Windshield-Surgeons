@@ -2,16 +2,9 @@
     $sub_title = get_sub_field('sub_title');
     $title = get_sub_field('title');
     $description = get_sub_field('description');
-    $dynamic_card = get_sub_field('dynamic_card');
-    $secondary_style = get_sub_field('secondary_style');
     $card_style = get_sub_field('card_style');
     $center_align = get_sub_field('center_align');
-
-    if($dynamic_card){
-        $cards = get_sub_field('dynamic_card_chooser');
-    } else {
-        $cards = get_sub_field('cards');
-    }
+    $cards = get_sub_field('cards');
 
     $number_of_columns = get_sub_field('number_of_columns');
     

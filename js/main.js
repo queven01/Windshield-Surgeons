@@ -12,9 +12,6 @@ jQuery(document).ready(function(){
 var $ = jQuery;
 
 let _offset = 100;
-// if( $('.device-version').length ) {
-//   _offset = 10;
-// }
 
 wow = new WOW(
   {
@@ -268,7 +265,7 @@ function _serviceToggles() {
   // Start and stop rotation helpers for Mobile
   function startMobileRotation() {
     if (!mobileIntervalId) {
-      mobileIntervalId = setInterval(rotateServiceMobile, 2000); // 2 seconds per switch
+      mobileIntervalId = setInterval(rotateServiceMobile, 2500); // 2 seconds per switch
     }
   }
 
@@ -282,7 +279,7 @@ function _serviceToggles() {
   // Start and stop rotation helpers for Desktop
   function startDesktopRotation() {
     if (!desktopIntervalId) {
-      desktopIntervalId = setInterval(rotateServiceDesktop, 2000); // 2 seconds per switch
+      desktopIntervalId = setInterval(rotateServiceDesktop, 2500); // 2 seconds per switch
     }
   }
 

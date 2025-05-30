@@ -14,7 +14,7 @@ $slides = get_field('slider_with_content');
             <div class="swiper-slide ">
                 <div class="slide-content row">
                     <div class="image-side col-md-6">
-                        <img src="<?php echo $image['url']; ?>" alt="">
+                        <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>">
                     </div>
                     <div class="content-side col-md-6">
                         <div class="content-container">

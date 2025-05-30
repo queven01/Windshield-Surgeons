@@ -25,7 +25,7 @@
     <div class="card v2 wow animate__animated animate__fadeInUp" data-wow-offset="<?php echo $offset; ?>">
 <?php endif; ?>
     <div class="image-container">
-        <img src="<?php echo $image['url']; ?>" alt="">
+        <img src="<?php echo $image['sizes']['large']; ?>" alt="<?php echo $image['alt']; ?>">
     </div>
     <div class="content">
         <h3 class="title"><?php echo $title ?></h3>

@@ -9,14 +9,16 @@
 ?>
 <section class="content-section numerical-list <?php if($angle){ echo "remove-angle";}?>">
     <div class="container small-container">
-        <div class="intro-content">
-            <span class="line"></span>
-            <?php 
-                if($sub_title) echo '<h4 class="section-sub-title">'. $sub_title .'</h4>';
-                if($title) echo '<h2 class="section-title">'. $title .'</h2>';
-                if($content) echo '<div class="description">'. $content .'</div>';
-            ?>
-        </div>
+        <?php if($title || $sub_title || $content): ?>
+            <div class="intro-content">
+                <span class="line"></span>
+                <?php 
+                    if($sub_title) echo '<h4 class="section-sub-title">'. $sub_title .'</h4>';
+                    if($title) echo '<h2 class="section-title">'. $title .'</h2>';
+                    if($content) echo '<div class="description">'. $content .'</div>';
+                ?>
+            </div>
+        <?php endif; ?>
         <div class="list-container">
             <?php foreach($list_items as $key => $item):
                 $title = $item['title'];

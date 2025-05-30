@@ -22,6 +22,7 @@
         .content {
             margin: 0 auto;  
             padding: 1.5rem;
+            width: 100%;
             .title {
                 margin-bottom: 1.5rem;
                 color: $primary;
@@ -69,7 +70,6 @@
             }   
         }
     }
-
     &-blog {
         a {
             text-decoration: none;
@@ -84,6 +84,9 @@
                 line-height: 0;
                 border-top-left-radius: 50px;
                 border-top-right-radius: 50px;
+                border: 1px solid #e5e5e5;
+                border-bottom: none;
+                aspect-ratio: 2 / 1; 
                 img {
                     width: 100%;
                     object-fit: cover;
@@ -116,6 +119,22 @@
             }
         }
 
+    }
+
+    //Rank Math
+    .rank-math-business-wrapper {
+        .rank-math-business-name {
+            font-size: 20px;
+            margin-bottom: .5rem;
+        }
+        h5 {
+            display: none;
+        }
+        address {
+            margin-bottom: .5rem;
+            font-style: normal;
+            font-size: 16px;  
+        }
     }
 }
 
@@ -157,21 +176,54 @@ a.card.v2 {
     }
 }
 
+.blog-page {
 
-.blog-posts {
+    .blog-intro {
+        margin-bottom: 4rem;
+        .title {
+            padding-bottom: 1rem;
+            border-bottom: 4px solid $primary;
+
+        }
+    }
+    .blog-content {
+        border-top: 4px solid $primary;
+        margin-top: 4rem;
+        padding-top: 2rem;
+    }
+    .blog-posts {
         display: grid;
         grid-template-columns: 1fr; /* Default to full width */
         gap: 16px; /* Space between items */
 
 
-    @media (min-width: 600px) {
-        grid-template-columns: 1fr 1fr; /* Two columns for rows after the first */
-
-        // &.featured > article:first-child {
-        //     grid-column: span 2; /* Make the first item span two columns */
-        // }
+        @media (min-width: 600px) {
+            grid-template-columns: 1fr 1fr; /* Two columns for rows after the first */
+        }
+        
+        &.featured {
+            margin-bottom: 5rem;
+            @media (min-width: 600px) {
+                grid-template-columns: 1fr 1fr; /* Two columns for rows after the first */
+            }
+            @media (min-width: 992px) {
+                grid-template-columns: 1fr 1fr 1fr; /* Two columns for rows after the first */
+            }
+        } 
     }
 }
+
+.pagination-navigation {
+    .page-numbers {
+        font-size: 20px;
+        padding: 5px 10px;
+        &.current {
+             background: $tertiary;
+             color: white;
+        }
+    }
+}
+
 
 .with-padding {
     padding-bottom: 5rem;

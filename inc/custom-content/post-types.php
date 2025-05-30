@@ -36,7 +36,8 @@ class CustomPostType{
 
     //set up taxonomies for custom types
     private function createTaxonomies(){
-        $this->buildTaxonomy('City', 'Cities' , array('locations'),array('hierarchical'=>true));
+        $this->buildTaxonomy('Testimonial Category', 'Testimonial Categories' , array('testimonials'),array('hierarchical'=>true));
+        $this->buildTaxonomy('Testimonial Location', 'Testimonial Location' , array('testimonials'),array('hierarchical'=>true));
     }
 
     private function buildTypeObject($singular, $plural, $public = true, $options = array() ){
@@ -138,34 +139,15 @@ class CustomPostType{
 
 //call to set up content
 $my_custom_posts = array(
-    // array(
-    //     'singular'  => 'Service',
-    //     'plural'    => 'Services',
-    //     'public'    => true,
-    //     'options'   => array(
-    //         'menu_icon' => 'dashicons-admin-tools',
-    //         'has_archive' => true,
-    //         ), //array of settings
-    //     ),
     array(
         'singular'  => 'Testimonial',
         'plural'    => 'Testimonials',
-        'public'    => true,
+        'public'    => false,
         'options'   => array(
             'menu_icon' => 'dashicons-testimonial',
-            'has_archive' => true,
+            'has_archive' => false,
             ), //array of settings
         ),
-    array(
-        'singular'  => 'Location',
-        'plural'    => 'Locations',
-        'public'    => true,
-        'options'   => array(
-            'menu_icon' => 'dashicons-location',
-            'has_archive' => true,
-            ), //array of settings
-        ),
-
 );
 
 //call to set up new fields

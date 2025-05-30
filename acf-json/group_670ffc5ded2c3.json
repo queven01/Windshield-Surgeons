@@ -3,6 +3,46 @@
     "title": "Blog Featured",
     "fields": [
         {
+            "key": "field_67e482bad2293",
+            "label": "Blog Section Title",
+            "name": "blog_section_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_67e482d9d2294",
+            "label": "Blog Section Description",
+            "name": "blog_section_description",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
             "key": "field_670ffc5e30715",
             "label": "Featured Posts",
             "name": "featured_posts",
@@ -16,9 +56,7 @@
                 "class": "",
                 "id": ""
             },
-            "post_type": [
-                "post"
-            ],
+            "post_type": "",
             "post_status": [
                 "publish"
             ],
@@ -32,6 +70,26 @@
             "min": "",
             "max": "",
             "elements": ""
+        },
+        {
+            "key": "field_67e482f5d2295",
+            "label": "Content After Posts",
+            "name": "content_after_posts",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
         }
     ],
     "location": [
@@ -52,5 +110,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1729102836
+    "modified": 1743029010
 }

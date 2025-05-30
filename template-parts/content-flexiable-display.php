@@ -30,6 +30,8 @@
                 get_template_part( 'components/content/content-list');
             elseif( get_row_layout() == 'information_grid' ): 
                 get_template_part( 'components/content/content-grid');
+            elseif( get_row_layout() == 'faq_grid' ): 
+                get_template_part( 'components/content/content-faq');
             elseif( get_row_layout() == 'column_image' ): 
                 get_template_part( 'components/content/content-image');
             elseif( get_row_layout() == 'staggered_content' ): 

@@ -41,7 +41,7 @@
                                 <?php if( $item['link'] ){ echo '<a class="link" href="'.$item['link']['url'].'">'; } ?>
                                     <?php if($item['icon']):?>
                                     <div class="image-container">
-                                        <img src="<?php echo $item['icon']['url']; ?>" alt="">
+                                        <img src="<?php echo $item['icon']['url']; ?>" alt="<?php echo $image['alt']; ?>">
                                     </div>
                                     <?php endif; ?>
                                     <div class="content">

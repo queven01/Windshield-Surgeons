@@ -45,12 +45,7 @@
 						the_custom_logo();
 					else : ?>
 						<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>					
-					<?php endif;
-					$windshield_surgeons_theme_description = get_bloginfo( 'description', 'display' );
-					if ( $windshield_surgeons_theme_description || is_customize_preview() ) :
-						?>
-						<p class="site-description"><?php echo $windshield_surgeons_theme_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
-					<?php endif; ?>
+					<?php endif;?>
 				</div><!-- .site-branding -->
 
 				<nav id="site-navigation-desktop" class="main-navigation desktop">
@@ -58,6 +53,7 @@
 						wp_nav_menu(array(
 							'theme_location' => 'primary',
 							'menu_class'        => 'mega-menu',
+							'depth'=> 4,
 							'walker' => new Mega_Menu_Navigation()
 						));
 					?>
@@ -80,7 +76,8 @@
 								wp_nav_menu(array(
 									'theme_location' => 'primary',
 									'menu_class'        => 'mega-menu',
-									'walker' => new Mega_Menu_Navigation()
+									'depth'=> 3,
+									'walker' => new Mega_Menu_Navigation(),
 								));
 							?>
 						</div>
@@ -98,9 +95,6 @@
 										if($twitter){ 
 											echo '<a target="_blank" href="'.$twitter.'">'.file_get_contents( get_template_directory_uri() . '/assets/icons/twitter-x.svg' ).'</a>';
 										}
-										// if($tik_tok){ 
-										// 	echo '<a target="_blank" href="'.$tik_tok.'">'.file_get_contents( get_template_directory_uri() . '/assets/icons/tic-toc.svg' ).'</a>';
-										// }
 									?>
 								</div>
 								<?php endif; ?>
@@ -135,9 +129,6 @@
 						if($twitter){ 
 							echo '<a target="_blank" href="'.$twitter.'">'.file_get_contents( get_template_directory_uri() . '/assets/icons/twitter-x.svg' ).'</a>';
 						}
-						// if($tik_tok){ 
-						// 	echo '<a target="_blank" href="'.$tik_tok.'">'.file_get_contents( get_template_directory_uri() . '/assets/icons/tic-toc.svg' ).'</a>';
-						// }
 					?>
 				</div>
 				<?php endif; ?>

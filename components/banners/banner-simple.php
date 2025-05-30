@@ -22,8 +22,10 @@ if($isBgImage){
 
 if($isBannerImage){
     $banner_image = get_field('banner_image')['url'];
+    $banner_image_alt = get_field('image')['alt'];
 } else {
     $banner_image = "";
+    $banner_image_alt = "";
 }
 ?>
 <section class="banner banner-simple" <?php if($banner_overlay_color){echo 'style="background-color:'.$banner_overlay_color.';"';}?>>
@@ -40,7 +42,7 @@ if($isBannerImage){
             </div>
             <div class="col-12 mt-5 project-image-container">
                 <?php if($banner_button){echo '<a class="gsap-hover" target="_blank" href="'.$banner_button['url'].'">'; }?>
-                    <img class="project-featured-image" src="<?php echo $banner_image?>" alt="">
+                    <img class="project-featured-image" src="<?php echo $banner_image?>" alt="<?php echo $banner_image_alt; ?>">
                 <?php if($banner_button){echo '</a>'; }?>
                 <!-- Cursor Follower -->
                 <div class="cursor-follower">View Site</div>
@@ -48,6 +50,6 @@ if($isBannerImage){
         </div>
     </div>
     <?php if(!$color_background_only):?>
-    <img class="banner-bg-image" src="<?php echo $bg_image; ?>" alt="">
+    <img class="banner-bg-image" src="<?php echo $bg_image; ?>" alt="background-image">
     <?php endif; ?>
 </section>

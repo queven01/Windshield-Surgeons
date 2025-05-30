@@ -7,14 +7,16 @@
 ?>
 <section class="content-section staggered-list">
     <div class="container">
-        <div class="intro-content">
-            <span class="line"></span>
-            <?php 
-                if($sub_title) echo '<h4 class="section-sub-title">'. $sub_title .'</h4>';
-                if($title) echo '<h2 class="section-title">'. $title .'</h2>';
-                if($content) echo '<div class="description">'. $content .'</div>';
-            ?>
-        </div>
+        <?php if($title || $sub_title || $content): ?>
+            <div class="intro-content">
+                <span class="line"></span>
+                <?php 
+                    if($sub_title) echo '<h4 class="section-sub-title">'. $sub_title .'</h4>';
+                    if($title) echo '<h2 class="section-title">'. $title .'</h2>';
+                    if($content) echo '<div class="description">'. $content .'</div>';
+                ?>
+            </div>
+        <?php endif; ?>
         <div class="list-container">
             <?php foreach($list_items as $key => $item):
                 $title = $item['title'];
@@ -28,8 +30,8 @@
                         <div class="description"><?php echo $content?></div>
                     </div>
                     <?php if($icon):?>
-                    <div class="image-container">
-                        <img src="<?php echo $icon['url']?>" alt="<?php echo $icon['alt']?>">
+                    <div class="image-container" style="<?php echo 'background-image: url('.$icon['url'].')'?>">
+                        <!-- <img src="<?php echo $icon['url']?>" alt="<?php echo $icon['alt']?>"> -->
                     </div>
                     <?php endif; ?>
                 </div>

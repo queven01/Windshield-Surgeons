@@ -12,8 +12,6 @@
     $image_row = get_field('image_row');
 
     $video = get_field('video');
-
-    $snow_effect = get_field('snow_effect');
     
     if($isTitle){
         $banner_title = get_field('title');
@@ -74,98 +72,98 @@
 <section class="car-diagram-section">
     <div class="car-diagram">
         <div class="image-container">
-            <img src="<?php echo get_template_directory_uri() . '/assets/image/car-diagram-resized.png' ?>" alt="">
+            <img src="<?php echo get_template_directory_uri() . '/assets/image/car-diagram-resized.png' ?>" alt="A car diagram" title="A car diagram">
         </div>
         <div class="content-container desktop">
             <?php if($service_btn_1):?>
                 <div class="selection_container windshield_replacement">
                     <a href="<?php echo $service_btn_1['url']?>" class="selection_button windshield_replacement active"><span><?php echo file_get_contents( get_template_directory_uri() . '/assets/icons/plus.svg' );?></span></a>
-                    <div class="selection_info">
+                    <a href="<?php echo $service_btn_1['url']?>" class="selection_info">
                         <?php echo $service_btn_1['title']?>
-                    </div>
+                    </a>
                 </div>
             <?php endif; ?>
             <?php if($service_btn_2):?>
                 <div class="selection_container windshield_repair">
                     <a href="<?php echo $service_btn_2['url']?>" class="selection_button windshield_repair"><span><?php echo file_get_contents( get_template_directory_uri() . '/assets/icons/plus.svg' );?></span></a>
-                    <div class="selection_info">
+                    <a href="<?php echo $service_btn_2['url']?>" class="selection_info">
                         <?php echo $service_btn_2['title']?>
-                    </div>
+                    </a>
                 </div>
             <?php endif; ?>
             <?php if($service_btn_3):?>
                 <div class="selection_container windshield_ADAS">
                     <a href="<?php echo $service_btn_3['url']?>" class="selection_button windshield_ADAS"><span><?php echo file_get_contents( get_template_directory_uri() . '/assets/icons/plus.svg' );?></span></a>
-                    <div class="selection_info">
+                    <a href="<?php echo $service_btn_3['url']?>" class="selection_info">
                         <?php echo $service_btn_3['title']?>
-                    </div>
+                    </a>
                 </div>
             <?php endif; ?>
             <?php if($service_btn_4):?>
                 <div class="selection_container mirror">
                     <a href="<?php echo $service_btn_4['url']?>" class="selection_button mirror"><span><?php echo file_get_contents( get_template_directory_uri() . '/assets/icons/plus.svg' );?></span></a>
-                    <div class="selection_info">
+                    <a href="<?php echo $service_btn_4['url']?>" class="selection_info">
                         <?php echo $service_btn_4['title']?>
-                    </div>
+                    </a>
                 </div>
             <?php endif; ?>
             <?php if($service_btn_5):?>
                 <div class="selection_container side_glass">
                     <a href="<?php echo $service_btn_5['url']?>" class="selection_button side_glass"><span><?php echo file_get_contents( get_template_directory_uri() . '/assets/icons/plus.svg' );?></span></a>
-                    <div class="selection_info">
+                    <a href="<?php echo $service_btn_5['url']?>" class="selection_info">
                         <?php echo $service_btn_5['title']?>
-                    </div>
+                    </a>
                 </div>
             <?php endif; ?>
             <?php if($service_btn_6):?>
                 <div class="selection_container back_glass">
                     <a href="<?php echo $service_btn_6['url']?>" class="selection_button back_glass"><span><?php echo file_get_contents( get_template_directory_uri() . '/assets/icons/plus.svg' );?></span></a>
-                    <div class="selection_info">
+                    <a href="<?php echo $service_btn_6['url']?>" class="selection_info">
                         <?php echo $service_btn_6['title']?>
-                    </div>
+                    </a>
                 </div>
             <?php endif; ?>
         </div>
         <div class="content-container mobile">
             <div class="selection_container windshield_replacement">
-                <a href="#" class="selection_button windshield_replacement active" data-button="replacement"><span><?php echo file_get_contents( get_template_directory_uri() . '/assets/icons/plus.svg' );?></span></a>
+                <a href="<?php echo $service_btn_1['url']?>" class="selection_button windshield_replacement active" data-button="replacement"><span><?php echo file_get_contents( get_template_directory_uri() . '/assets/icons/plus.svg' );?></span></a>
             </div>
             <div class="selection_container windshield_repair">
-                <a href="#" class="selection_button windshield_repair" data-button="repair"><span><?php echo file_get_contents( get_template_directory_uri() . '/assets/icons/plus.svg' );?></span></a>
+                <a href="<?php echo $service_btn_2['url']?>" class="selection_button windshield_repair" data-button="repair"><span><?php echo file_get_contents( get_template_directory_uri() . '/assets/icons/plus.svg' );?></span></a>
             </div>
             <div class="selection_container windshield_ADAS">
-                <a href="#" class="selection_button windshield_ADAS" data-button="ADAS"><span><?php echo file_get_contents( get_template_directory_uri() . '/assets/icons/plus.svg' );?></span></a>
+                <a href="<?php echo $service_btn_3['url']?>" class="selection_button windshield_ADAS" data-button="ADAS"><span><?php echo file_get_contents( get_template_directory_uri() . '/assets/icons/plus.svg' );?></span></a>
             </div>
             <div class="selection_container mirror">
-                <a href="#" class="selection_button mirror" data-button="mirror"><span><?php echo file_get_contents( get_template_directory_uri() . '/assets/icons/plus.svg' );?></span></a>
+                <a href="<?php echo $service_btn_4['url']?>" class="selection_button mirror" data-button="mirror"><span><?php echo file_get_contents( get_template_directory_uri() . '/assets/icons/plus.svg' );?></span></a>
             </div>
             <div class="selection_container side_glass">
-                <a href="#" class="selection_button side_glass" data-button="side_glass"><span><?php echo file_get_contents( get_template_directory_uri() . '/assets/icons/plus.svg' );?></span></a>
+                <a href="<?php echo $service_btn_5['url']?>" class="selection_button side_glass" data-button="side_glass"><span><?php echo file_get_contents( get_template_directory_uri() . '/assets/icons/plus.svg' );?></span></a>
             </div>
             <div class="selection_container back_glass">
-                <a href="#" class="selection_button back_glass" data-button="back_glass"><span><?php echo file_get_contents( get_template_directory_uri() . '/assets/icons/plus.svg' );?></span></a>
+                <a href="<?php echo $service_btn_6['url']?>" class="selection_button back_glass" data-button="back_glass"><span><?php echo file_get_contents( get_template_directory_uri() . '/assets/icons/plus.svg' );?></span></a>
             </div>
         </div>
     </div>
 
     <div class="service-button-container mobile">
         <div class="selection_info active" data-button="replacement">
-            <a href="/" class="btn secondary">Windshield Replacement</a>
+            <a href="<?php echo $service_btn_1['url']?>" class="btn secondary"><?php echo $service_btn_1['title']?></a>
         </div>
         <div class="selection_info" data-button="repair">
-            <a href="/" class="btn secondary">Windshield Repair</a>
+            <a href="<?php echo $service_btn_2['url']?>" class="btn secondary"><?php echo $service_btn_2['title']?></a>
         </div>
         <div class="selection_info" data-button="ADAS">
-            <a href="/" class="btn secondary">ADAS Safety Calibrations</a>
+            <a href="<?php echo $service_btn_3['url']?>" class="btn secondary"><?php echo $service_btn_3['title']?></a>
         </div>
         <div class="selection_info" data-button="mirror">
-            <a href="/" class="btn secondary">Mirror Replacement</a>    
+            <a href="<?php echo $service_btn_4['url']?>" class="btn secondary"><?php echo $service_btn_4['title']?></a>    
         </div>
         <div class="selection_info" data-button="side_glass">
-            <a href="/" class="btn secondary">Side Glass Replacement</a>   
+            <a href="<?php echo $service_btn_5['url']?>" class="btn secondary"><?php echo $service_btn_5['title']?></a>   
         </div>
         <div class="selection_info" data-button="back_glass">
-            <a href="/" class="btn secondary">Back Glass Replacement</a>    
+            <a href="<?php echo $service_btn_6['url']?>" class="btn secondary"><?php echo $service_btn_6['title']?></a>    
         </div>
     </div>
 
@@ -174,7 +172,7 @@
             <?php foreach($image_row as $image):
                 $image = $image['image']; ?>
                 <div class="image">
-                    <img src="<?php echo $image['url']?>" alt="">
+                    <img src="<?php echo $image['url']?>" alt="<?php echo $image['alt']?>" title="<?php echo $image['title']?>">
                 </div>
             <?php endforeach;?>
         </div>

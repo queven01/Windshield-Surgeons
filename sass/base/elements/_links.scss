@@ -9,16 +9,11 @@ a {
 	&:hover,
 	&:focus,
 	&:active {
-		// color: $color__link-hover;
+		outline: 0;
+		color: $tertiary-dark
 	}
 
 	&:focus {
 		outline: thin dotted;
-	}
-
-	&:hover,
-	&:active {
-		outline: 0;
-		color: $tertiary-super-light;
 	}
 }

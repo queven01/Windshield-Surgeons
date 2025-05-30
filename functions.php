@@ -225,6 +225,12 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 class Mega_Menu_Navigation extends Walker_Nav_Menu {
     // Start Level
     function start_lvl( &$output, $depth = 0, $args = array() ) {
+		if (!is_string($output)) {
+			$output = ''; // Initialize if it's not a string
+		}
+		// Ensure $args is an object
+		$args = (object) $args;
+
         $indent = str_repeat( "\t", $depth );
         $classes = ($depth === 1) ? 'sub-menu second-level-menu' : 'sub-menu';
         $output .= "\n$indent<ul class=\"$classes\">\n";
@@ -232,6 +238,7 @@ class Mega_Menu_Navigation extends Walker_Nav_Menu {
 
     // Start Element
     function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+		$args = (object) $args; // Ensure args is an object to avoid accessing offsets on strings
         $indent = ($depth) ? str_repeat( "\t", $depth ) : '';
 
         $classes = empty( $item->classes ) ? array() : (array) $item->classes;
@@ -274,9 +281,9 @@ class Mega_Menu_Navigation extends Walker_Nav_Menu {
 
 			if (is_string($description) && !empty($description) && !empty($icon)) {
 				$item_output .= '<a class="link-container" '. $attributes .'>';
-				$item_output .= '<span class="menu-icon"><img src="' . esc_url($icon['sizes']['thumbnail']) . '" alt="icon"></span>';
+				$item_output .= '<span class="menu-icon"><img src="' . esc_url($icon['sizes']['thumbnail']) . '" alt="menu icon" title="'. $icon['title'] .'"></span>';
 				$item_output .= '<span class="menu-content">';
-				$item_output .= '<h4 class="menu-title">'.$args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after .'</h4>';
+				$item_output .= '<div class="menu-title">'.$args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after .'</div>';
 
                 $item_output .= '<span class="menu-description">' . esc_html($description) . '</span>';
 				$item_output .= '</span>';
@@ -302,4 +309,7 @@ class Mega_Menu_Navigation extends Walker_Nav_Menu {
         $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
     }
 }
+
+//Add Excerpt for Pages
+add_post_type_support( 'page', 'excerpt' );
 

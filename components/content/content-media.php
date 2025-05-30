@@ -81,20 +81,22 @@
                     </div>
                 <?php endif; ?>
                 <?php if($style == "image"): ?>
-                    <img src="<?php echo $image['url']; ?>" alt="">
+                    <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>">
                 <?php endif; ?>
                 <p>
                     <?php echo $after_media; ?>
                 </p>
             </div>
             <div class="col-lg-5">
-                <div class="intro-content wow animate__animated animate__slideInLeft">
-                    <span class="line"></span>
-                    <?php 
-                        if($sub_title) echo '<h4 class="section-sub-title">'. $sub_title .'</h4>';
-                        if($title) echo '<h2 class="section-title">'. $title .'</h2>';
-                    ?>
-                </div>
+                <?php if($title || $sub_title): ?>
+                    <div class="intro-content wow animate__animated animate__slideInLeft">
+                        <span class="line"></span>
+                        <?php 
+                            if($sub_title) echo '<h4 class="section-sub-title">'. $sub_title .'</h4>';
+                            if($title) echo '<h2 class="section-title">'. $title .'</h2>';
+                        ?>
+                    </div>
+                <?php endif; ?>
             </div>
             <div class="col-lg-7">
                 <?php echo $content; ?>
