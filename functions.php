@@ -156,42 +156,50 @@ add_action( 'widgets_init', 'windshield_surgeons_theme_widgets_init' );
 /**
  * Enqueue scripts and styles.
  */
+
+/**
+ * Enqueue scripts and styles.
+ */
 function windshield_surgeons_theme_scripts() {
 
+	$theme_version = wp_get_theme()->get('Version');
+
 	// CSS Files
-	//Main Theme Styles.CSS
-	wp_enqueue_style( 'theme_styles', get_stylesheet_directory_uri() . '/css/style.css', array(), date('H:i') ); 
-	// fonts from Folder
-	wp_enqueue_style('custom-site-fonts', get_stylesheet_directory_uri() .'/assets/fonts/fonts.css', false); 
-	//Animate Library
-	wp_enqueue_style('animate-library', get_stylesheet_directory_uri() .'/css/animate.min.css', false); 
-	//Swiper (slider) CSS file
-	wp_enqueue_style( 'swiper-style', get_stylesheet_directory_uri() . '/css/swiper-bundle.min.css', array() );
+	wp_enqueue_style('animate-library', get_stylesheet_directory_uri() . '/css/animate.min.css', array(), '4.1.1'); 
+	wp_enqueue_style('swiper-style', get_stylesheet_directory_uri() . '/css/swiper-bundle.min.css', array(), '11.0.5');
+	wp_enqueue_style('theme_styles', get_stylesheet_directory_uri() . '/css/style.css', array(), date('H:i')); // Bust cache on every load (dev only)
 
-	
-	//Javascript Files
-	//Swiper local JS file
-	wp_enqueue_script( 'swiper-scripts', get_stylesheet_directory_uri() . '/js/swiper-bundle.min.js', array('jquery') );
-	//Swiper local JS file
-	wp_enqueue_script( 'wow-scripts', get_stylesheet_directory_uri() . '/js/wow.min.js', array('jquery') );
-	//Bootstrap local JS file
-	wp_enqueue_script( 'bootstrap-scripts', get_stylesheet_directory_uri() . '/js/bootstrap.bundle.min.js', array('jquery') );
-	//Masonry local JS file
-	// wp_enqueue_script( 'masonry-scripts', get_stylesheet_directory_uri() . '/js/masonry-layout.min.js', array('jquery') ); 
-	//GSAP CDN
-	// wp_enqueue_script( 'gsap-scripts', 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js', array('jquery') );
-	//Text Plugin CDN
-	// wp_enqueue_script( 'text-plugin-scripts', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/TextPlugin.min.js', array('jquery') );
-	//Navigation JS
-	wp_enqueue_script( 'windshield_surgeons_theme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
-	//Main JS
-	wp_enqueue_script( 'windshield_surgeons_theme-mainjs', get_stylesheet_directory_uri() . '/js/main.js', array('jquery'), _S_VERSION, true );
+	// JS Files (order matters: Swiper/Bootstrap first, then custom scripts)
 
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
+	// Swiper JS
+	wp_enqueue_script('swiper-scripts', get_stylesheet_directory_uri() . '/js/swiper-bundle.min.js', array(), '11.0.5', true);
+	// WOW JS
+	wp_enqueue_script('wow-scripts', get_stylesheet_directory_uri() . '/js/wow.min.js', array(), '1.1.3', true);
+	// Bootstrap Bundle (with Popper)
+	wp_enqueue_script('bootstrap-scripts', get_stylesheet_directory_uri() . '/js/bootstrap.bundle.min.js', array('jquery'), '5.3.2', true);
+	// Navigation JS (core theme script)
+	wp_enqueue_script('windshield_surgeons_theme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), $theme_version, true);
+	// Main JS (custom interactions)
+	wp_enqueue_script('windshield_surgeons_theme-mainjs', get_stylesheet_directory_uri() . '/js/main.js', array('jquery'), $theme_version, true);
+
+	// WordPress Comment Reply
+	if (is_singular() && comments_open() && get_option('thread_comments')) {
+		wp_enqueue_script('comment-reply');
 	}
 }
-add_action( 'wp_enqueue_scripts', 'windshield_surgeons_theme_scripts' );
+add_action('wp_enqueue_scripts', 'windshield_surgeons_theme_scripts');
+
+
+function add_defer_to_specific_scripts($tag, $handle) {
+	$defer_scripts = array('wow-scripts', 'swiper-scripts', 'windshield_surgeons_theme-mainjs');
+
+	if (in_array($handle, $defer_scripts)) {
+		return str_replace(' src', ' defer="defer" src', $tag);
+	}
+
+	return $tag;
+}
+add_filter('script_loader_tag', 'add_defer_to_specific_scripts', 10, 2);
 
 /**
  * Implement the Custom Header feature.

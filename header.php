@@ -83,30 +83,32 @@
 						</div>
 						<div class="menu-contact">
 							<div class="header-contact">
-								<?php if($facebook||$instagram||$twitter||$tik_tok): ?>
-								<div class="social_media">
-									<?php 
-										if($facebook){ 
-											echo '<a target="_blank" href="'.$facebook.'">'.file_get_contents( get_template_directory_uri() . '/assets/icons/facebook.svg' ).'</a>';
-										}
-										if($instagram){ 
-											echo '<a target="_blank" href="'.$instagram.'">'.file_get_contents( get_template_directory_uri() . '/assets/icons/instagram.svg' ).'</a>';
-										}
-										if($twitter){ 
-											echo '<a target="_blank" href="'.$twitter.'">'.file_get_contents( get_template_directory_uri() . '/assets/icons/twitter-x.svg' ).'</a>';
-										}
-									?>
-								</div>
-								<?php endif; ?>
-								<?php if($phone_number):?>
-									<div class="header_phone">
-										<div class="icon"><?php echo file_get_contents( get_template_directory_uri() . '/assets/icons/phone.svg' ); ?></div>
-										<div>
-											<p><?php echo $phone_text;?></p>
-											<a href="tel:<?php echo $phone_number;?>"><?php echo $phone_number;?></a>
-										</div>
+								<div class="contact-info">
+									<?php if($facebook||$instagram||$twitter||$tik_tok): ?>
+									<div class="social_media">
+										<?php 
+											if($facebook){ 
+												echo '<a target="_blank" href="'.$facebook.'">'.file_get_contents( get_template_directory_uri() . '/assets/icons/facebook.svg' ).'</a>';
+											}
+											if($instagram){ 
+												echo '<a target="_blank" href="'.$instagram.'">'.file_get_contents( get_template_directory_uri() . '/assets/icons/instagram.svg' ).'</a>';
+											}
+											if($twitter){ 
+												echo '<a target="_blank" href="'.$twitter.'">'.file_get_contents( get_template_directory_uri() . '/assets/icons/twitter-x.svg' ).'</a>';
+											}
+										?>
 									</div>
-								<?php endif;?>
+									<?php endif; ?>
+									<?php if($phone_number):?>
+										<div class="header_phone">
+											<div class="icon"><?php echo file_get_contents( get_template_directory_uri() . '/assets/icons/phone.svg' ); ?></div>
+											<div>
+												<p><?php echo $phone_text;?></p>
+												<a href="tel:<?php echo $phone_number;?>"><?php echo $phone_number;?></a>
+											</div>
+										</div>
+									<?php endif;?>
+								</div>
 								<?php if($call_to_action_button){
 									echo '<a class="btn primary" href="'.$call_to_action_button['url'].'">'.$call_to_action_button['title'].'</a>';
 								};?>

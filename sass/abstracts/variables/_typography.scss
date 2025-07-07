@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'Montserrat-Variable';
+    src: url('../assets/fonts/Montserrat-VariableFont_wght.ttf');
+}
+
 // stylelint-disable value-keyword-case
 $font__main: "Montserrat-Variable", sans-serif;
 // stylelint-enable value-keyword-case
@@ -11,4 +16,4 @@ $defaultsize: 16px;
 $bodyfont: "Montserrat-Variable", sans-serif;
 $headingFont: "Montserrat-Variable", sans-serif;
 $headingFontSecondary: "Montserrat-Variable", sans-serif;
-$defaultfont: $bodyfont;
+$defaultfont: $bodyfont; 

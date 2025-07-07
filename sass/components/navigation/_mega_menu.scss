@@ -163,17 +163,30 @@
             }
             .menu-section {
                 position: relative;
-                height: 80%;
+                height: 100%;
                 overflow: hidden;
             }
             .menu-contact {
+                padding: 1rem;
+                position: absolute;
+                bottom: 0;
+                width: 100%;
                 border-top: 1px solid #eeeeee;
-                height: 10%;
+                background-color: white;
 
                 .social_media,
                 .header_phone,
                 .header-contact {
                     display: inherit !important;
+                    .contact-info {
+                        display: flex;
+                        justify-content: space-between;
+                    }
+                    a {
+                        display: block !important;
+                        color: white;
+                        text-align: center;
+                    }
                 }
             }
         }

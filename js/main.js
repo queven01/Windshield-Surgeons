@@ -1,309 +1,231 @@
-jQuery(document).ready(function(){
-    _swiperSlider();
-    _navScroll();
-    _activePage();
-    _megaMenu_1();
-    _serviceToggles();
-    wow.init();
-    _changeCardClass();
-    _loadinHTML();
-});
+jQuery(document).ready(function ($) {
+  const _offset = 100;
 
-var $ = jQuery;
+  // WOW.js Initialization
+  const wow = new WOW({
+    boxClass: 'wow',
+    animateClass: 'animated',
+    offset: _offset,
+    mobile: true,
+    live: true
+  });
+  wow.init();
 
-let _offset = 100;
+  // Initialize all
+  _swiperSlider();
+  _navScroll();
+  _activePage();
+  _megaMenu();
+  _serviceToggles();
+  _changeCardClass();
+  _loadInHTML();
 
-wow = new WOW(
-  {
-    boxClass:     'wow',      
-    animateClass: 'animated', 
-    offset:       _offset,          
-    mobile:       true,       
-    live:         true        
+  if ($(window).scrollTop() > 50) {
+    _navScrollOnScroll();
   }
-);
 
-//Load in Fade
-function _loadinHTML() {
-  $('.loadin-html.hidden').fadeIn(1000).removeClass('hidden');
-}
+  // Nav Scroll Handler
+  function _navScroll() {
+    $(window).on('scroll', _navScrollOnScroll);
+  }
 
-function _swiperSlider(){
-    
-    var swiper = new Swiper(".sliderWithOnlyImage", {
-        centeredSlides: true,
-        speed: 1500,
-        loop: true,
-        autoplay: {
-          delay: 5000,
-          disableOnInteraction: false,
-        },
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-        },
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-      });
+  function _navScrollOnScroll() {
+    const isScrolled = $(window).scrollTop() > 50;
+    $('.main-navigation, .site-branding').toggleClass('scroll-bg', isScrolled);
+    $('.site-branding img').toggleClass('resize', isScrolled);
+    $('.site-header-container').toggleClass('sticky', isScrolled);
+  }
 
-    var swiper = new Swiper(".sliderWithContent", {
-        speed: 1500,
-        loop: true,
-        autoplay: {
-          delay: 5000,
-          disableOnInteraction: false,
-        },
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-      });
+  // Load in Fade
+  function _loadInHTML() {
+    $('.loadin-html.hidden').fadeIn(1000).removeClass('hidden');
+  }
 
-      var swiper = new Swiper(".testimonialSlider", {
-        speed: 1500,
-        slidesPerView: 1,
-        spaceBetween: 35,
-        breakpoints: {
-          992: {
-            slidesPerView: 2,
-            spaceBetween: 35,
-          }
-        },
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-        },
-        navigation: {
-          nextEl: ".next_slide",
-          prevEl: ".prev_slide",
-        },
-      });
-} 
-
-if($(window).scrollTop() > 50) {
-    _navScroll();
-}
-
-function _navScroll(){
-    $(window).scroll(function(event){
-        if($(window).scrollTop() > 50) {
-            $('.main-navigation').addClass('scroll-bg')
-            $('.site-branding').addClass('scroll-bg')
-            $('.site-branding img').addClass('resize')
-            $('.site-header-container').addClass('sticky');
-        } else {
-            $('.main-navigation').removeClass('scroll-bg')
-            $('.site-branding').removeClass('scroll-bg')
-            $('.site-branding img').removeClass('resize') 
-            $('.site-header-container').removeClass('sticky');
-        }
+  // Swiper Slider Init
+  function _swiperSlider() {
+    new Swiper(".sliderWithOnlyImage", {
+      centeredSlides: true,
+      speed: 1500,
+      loop: true, 
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
     });
-} 
 
-//Active Page
-function _activePage() {
-    var current = location.pathname.replace(/\/$/, '');
-    var curretSeg = current.substr(current.lastIndexOf('/') + 1);
+    new Swiper(".sliderWithContent", {
+      speed: 1500,
+      loop: true,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
 
-    $('#inner-page-navigation li a').each(function(){
-        var $this = $(this);
-        var url= $this.attr('href').replace(/\/$/, '');
-        var lastSeg = url.substr(url.lastIndexOf('/') + 1);
-
-        // if the current path is like this link, make it active
-        if(lastSeg.indexOf(curretSeg) !== -1){
-            $this.addClass('active');
+    new Swiper(".testimonialSlider", {
+      speed: 1500,
+      slidesPerView: 1,
+      spaceBetween: 35,
+      breakpoints: {
+        992: {
+          slidesPerView: 2,
         }
-    })
-}
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".next_slide",
+        prevEl: ".prev_slide",
+      },
+    });
+  }
 
-//Mega Menu 
-function _megaMenu_1() {
-  const menuItems = document.querySelectorAll('.mega-menu > li.menu-item-has-children');
+  // Active Page Highlight
+  function _activePage() {
+    const currentPath = location.pathname.replace(/\/$/, '');
+    const currentSegment = currentPath.substring(currentPath.lastIndexOf('/') + 1);
 
-  menuItems.forEach((item) => {
-    // Use only the direct child trigger (e.g., anchor or button) inside the menu item to open the submenu
-    const trigger = item.firstElementChild; // Adjust if your trigger element is nested differently
+    $('#inner-page-navigation li a').each(function () {
+      const $this = $(this);
+      const href = $this.attr('href').replace(/\/$/, '');
+      const hrefSegment = href.substring(href.lastIndexOf('/') + 1);
 
-    if (trigger) {
+      if (hrefSegment.indexOf(currentSegment) !== -1) {
+        $this.addClass('active');
+      }
+    });
+  }
+
+  // Mega Menu
+  function _megaMenu() {
+    const menuItems = document.querySelectorAll('.mega-menu > li.menu-item-has-children');
+
+    menuItems.forEach(item => {
+      const trigger = item.firstElementChild;
+      if (!trigger) return;
+
       trigger.addEventListener('click', function (e) {
         e.preventDefault();
-        const mobileMenuArrow = document.querySelector('.menu-navigation .arrow-container');
-        
-        // Select the first-level submenu
         const submenu = item.querySelector(':scope > ul');
+        const arrow = document.querySelector('.menu-navigation .arrow-container');
 
-        // Close all other submenus
         closeAllSubmenus();
 
-        // Toggle the clicked submenu
-        if (submenu && submenu.classList.contains('show')) {
-          submenu.classList.remove('show');
-          mobileMenuArrow.classList.remove('show');
-        } else {
+        if (submenu && !submenu.classList.contains('show')) {
           submenu.classList.add('show');
-          mobileMenuArrow.classList.add('show');
+          arrow?.classList.add('show');
+        } else {
+          submenu?.classList.remove('show');
+          arrow?.classList.remove('show');
         }
 
-        // Stop event from bubbling up to the document
         e.stopPropagation();
       });
-    }
-  });
+    });
 
-  // Function to close all first-level submenus
-  function closeAllSubmenus() {
-    menuItems.forEach((item) => {
-      const submenu = item.querySelector(':scope > ul');
-      if (submenu) {
-        submenu.classList.remove('show');
-      }
+    function closeAllSubmenus() {
+      menuItems.forEach(item => {
+        item.querySelector(':scope > ul')?.classList.remove('show');
+      });
+      document.querySelector('.menu-navigation .arrow-container')?.classList.remove('show');
+    }
+
+    document.addEventListener('click', e => {
+      menuItems.forEach(item => {
+        if (!item.contains(e.target)) {
+          item.querySelector(':scope > ul')?.classList.remove('show');
+          document.querySelector('.menu-navigation .arrow-container')?.classList.remove('show');
+        }
+      });
     });
   }
 
-  // Close submenu if clicking outside any menu item
-  document.addEventListener('click', function (e) {
-    menuItems.forEach((item) => {
-      const submenu = item.querySelector(':scope > ul');
-      const mobileMenuArrow = document.querySelector('.menu-navigation .arrow-container');
+  // Services Toggles
+  function _serviceToggles() {
+    const $mobileButtons = $('.car-diagram .mobile .selection_container .selection_button');
+    const $desktopButtons = $('.car-diagram .desktop .selection_container .selection_button');
+    const $infoPanels = $('.service-button-container .selection_info');
 
-      // If click is outside the open submenu and menu item
-      if (submenu && submenu.classList.contains('show') && !item.contains(e.target)) {
-        submenu.classList.remove('show');
-        mobileMenuArrow.classList.remove('show');
-      }
-    });
-  });
-}
+    let mobileInterval, desktopInterval, clickTimeout;
+    let currentIndexMobile = 0;
+    let currentIndexDesktop = 0;
 
-//Services Toggles 
-function _serviceToggles() {
-  const $diagramButtonsMobile = $('.car-diagram .mobile .selection_container .selection_button');
-  const $diagramButtonsDesktop = $('.car-diagram .desktop .selection_container .selection_button');
-  const $listofbutton = $('.service-button-container .selection_info');
+    $mobileButtons.on('click', function (e) {
+      e.preventDefault();
+      const target = $(this).attr('data-button');
 
-  let mobileIntervalId, desktopIntervalId;
-  let isDesktopHovered = false;
-  let currentIndexMobile = 0;
-  let currentIndexDesktop = 0;
-  let clickTimeout; // For managing the click pause duration
+      $mobileButtons.removeClass('active');
+      $(this).addClass('active');
 
-  // Mobile click events
-  $diagramButtonsMobile.on('click', function(e) {
-    e.preventDefault();
-    $diagramButtonsMobile.removeClass('active');
-    $(this).addClass('active');
+      $infoPanels.removeClass('active').filter(`[data-button="${target}"]`).addClass('active');
 
-    const $button_data = $(this).attr('data-button');
-    $listofbutton.removeClass('active');
-    
-    $listofbutton.each(function() {
-      const $button_data_2 = $(this).attr('data-button');
-      if ($button_data === $button_data_2) {
-        $(this).addClass('active');
-      }
+      clearInterval(mobileInterval);
+      clearTimeout(clickTimeout);
+      clickTimeout = setTimeout(startMobileRotation, 10000);
     });
 
-    // On click, stop the current interval, and restart with 10 seconds delay
-    stopMobileRotation();
-    clearTimeout(clickTimeout);
-    clickTimeout = setTimeout(startMobileRotation, 10000); // 10 second delay before restarting
-  });
-
-  // Desktop hover events
-  $diagramButtonsDesktop.on('mouseover', function() {
-    $diagramButtonsDesktop.removeClass('active');
-    $(this).addClass('active');
-    stopDesktopRotation(); // stop rotation on hover
-  });
-
-  $diagramButtonsDesktop.on('mouseleave', function() {
-    startDesktopRotation(); // resume rotation after leaving hover
-  });
-
-  // Rotate Services for Mobile
-  function rotateServiceMobile() {
-    $diagramButtonsMobile.removeClass('active'); // remove active from all
-    $listofbutton.removeClass('active');
-
-    // Get the next button and content to activate
-    currentIndexMobile = (currentIndexMobile + 1) % $diagramButtonsMobile.length;
-    const $nextButton = $diagramButtonsMobile.eq(currentIndexMobile);
-    const $button_data = $nextButton.attr('data-button');
-
-    $nextButton.addClass('active');
-    $listofbutton.each(function() {
-      const $button_data_2 = $(this).attr('data-button');
-      if ($button_data === $button_data_2) {
-        $(this).addClass('active');
-      }
+    $desktopButtons.on('mouseover', function () {
+      $desktopButtons.removeClass('active');
+      $(this).addClass('active');
+      clearInterval(desktopInterval);
     });
-  }
 
-  // Rotate Services for Desktop
-  function rotateServiceDesktop() {
-    if (isDesktopHovered) return; // don't rotate if hovering
+    $desktopButtons.on('mouseleave', startDesktopRotation);
 
-    $diagramButtonsDesktop.removeClass('active'); // remove active from all
+    function rotateService($buttons, currentIndex, isMobile = false) {
+      $buttons.removeClass('active');
+      $infoPanels.removeClass('active');
 
-    // Get the next button and content to activate
-    currentIndexDesktop = (currentIndexDesktop + 1) % $diagramButtonsDesktop.length;
-    const $nextButton = $diagramButtonsDesktop.eq(currentIndexDesktop);
-    const $button_data = $nextButton.attr('data-button');
+      currentIndex = (currentIndex + 1) % $buttons.length;
+      const $nextButton = $buttons.eq(currentIndex);
+      const target = $nextButton.attr('data-button');
 
-    $nextButton.addClass('active');
-    $listofbutton.each(function() {
-      const $button_data_2 = $(this).attr('data-button');
-      if ($button_data === $button_data_2) {
-        $(this).addClass('active');
+      $nextButton.addClass('active');
+      $infoPanels.filter(`[data-button="${target}"]`).addClass('active');
+
+      return currentIndex;
+    }
+
+    function startMobileRotation() {
+      if (!mobileInterval) {
+        mobileInterval = setInterval(() => {
+          currentIndexMobile = rotateService($mobileButtons, currentIndexMobile, true);
+        }, 2500);
       }
-    });
+    }
+
+    function startDesktopRotation() {
+      if (!desktopInterval) {
+        desktopInterval = setInterval(() => {
+          currentIndexDesktop = rotateService($desktopButtons, currentIndexDesktop);
+        }, 2500);
+      }
+    }
+
+    startMobileRotation();
+    startDesktopRotation();
   }
 
-  // Start and stop rotation helpers for Mobile
-  function startMobileRotation() {
-    if (!mobileIntervalId) {
-      mobileIntervalId = setInterval(rotateServiceMobile, 2500); // 2 seconds per switch
+  // Change Card Animation on Small Screens
+  function _changeCardClass() {
+    if ($(window).width() < 767 && $('.card-component').length) {
+      $('.card-component .card')
+        .removeClass('animate__fadeInUp')
+        .addClass('animate__fadeInRight');
     }
   }
-
-  function stopMobileRotation() {
-    if (mobileIntervalId) {
-      clearInterval(mobileIntervalId);
-      mobileIntervalId = null;
-    }
-  }
-
-  // Start and stop rotation helpers for Desktop
-  function startDesktopRotation() {
-    if (!desktopIntervalId) {
-      desktopIntervalId = setInterval(rotateServiceDesktop, 2500); // 2 seconds per switch
-    }
-  }
-
-  function stopDesktopRotation() {
-    if (desktopIntervalId) {
-      clearInterval(desktopIntervalId);
-      desktopIntervalId = null;
-    }
-  }
-
-  // Initialize rotation
-  startMobileRotation();
-  startDesktopRotation();
-}
-
-
-
-function _changeCardClass() {
-  if ($(window).width() < 767) {
-    if ($(".card-component")[0]){
-      $card = $('.card-component .card');
-
-      $card.removeClass('animate__fadeInUp')
-      $card.addClass('animate__fadeInRight')
-    }
-  }
-}
+});

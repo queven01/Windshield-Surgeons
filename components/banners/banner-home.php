@@ -72,7 +72,44 @@
 <section class="car-diagram-section">
     <div class="car-diagram">
         <div class="image-container">
-            <img src="<?php echo get_template_directory_uri() . '/assets/image/car-diagram-resized.png' ?>" alt="A car diagram" title="A car diagram">
+            <picture>
+                <source
+                    type="image/webp"
+                    media="(max-width: 480px)"
+                    srcset="<?php echo get_stylesheet_directory_uri(); ?>/assets/image/car-diagram-480w.webp 1x, <?php echo get_stylesheet_directory_uri(); ?>/assets/image/car-diagram-960w.webp 2x">
+                <source
+                    type="image/webp"
+                    media="(max-width: 768px)"
+                    srcset="<?php echo get_stylesheet_directory_uri(); ?>/assets/image/car-diagram-768w.webp 1x, <?php echo get_stylesheet_directory_uri(); ?>/assets/image/car-diagram-1536w.webp 2x">
+                <source
+                    type="image/webp"
+                    media="(max-width: 1024px)"
+                    srcset="<?php echo get_stylesheet_directory_uri(); ?>/assets/image/car-diagram-1024w.webp 1x, <?php echo get_stylesheet_directory_uri(); ?>/assets/image/car-diagram-2048w.webp 2x">
+                <source
+                    type="image/webp"
+                    media="(max-width: 1300px)"
+                    srcset="<?php echo get_stylesheet_directory_uri(); ?>/assets/image/car-diagram-1300w.webp 1x, <?php echo get_stylesheet_directory_uri(); ?>/assets/image/car-diagram-2600w.webp 2x">
+                <source
+                    type="image/webp"
+                    srcset="<?php echo get_stylesheet_directory_uri(); ?>/assets/image/car-diagram-1300w.webp 1x, <?php echo get_stylesheet_directory_uri(); ?>/assets/image/car-diagram-2600w.webp 2x">
+
+                <source
+                    media="(max-width: 480px)"
+                    srcset="<?php echo get_stylesheet_directory_uri(); ?>/assets/image/car-diagram-480w.png 1x, <?php echo get_stylesheet_directory_uri(); ?>/assets/image/car-diagram-960w.png 2x">
+                <source
+                    media="(max-width: 768px)"
+                    srcset="<?php echo get_stylesheet_directory_uri(); ?>/assets/image/car-diagram-768w.png 1x, <?php echo get_stylesheet_directory_uri(); ?>/assets/image/car-diagram-1536w.png 2x">
+                <source
+                    media="(max-width: 1024px)"
+                    srcset="<?php echo get_stylesheet_directory_uri(); ?>/assets/image/car-diagram-1024w.png 1x, <?php echo get_stylesheet_directory_uri(); ?>/assets/image/car-diagram-2048w.png 2x">
+                <source
+                    media="(max-width: 1300px)"
+                    srcset="<?php echo get_stylesheet_directory_uri(); ?>/assets/image/car-diagram-1300w.png 1x, <?php echo get_stylesheet_directory_uri(); ?>/assets/image/car-diagram-2600w.png 2x">
+                <img
+                    src="<?php echo get_stylesheet_directory_uri(); ?>/assets/image/car-diagram-1300w.png" srcset="<?php echo get_stylesheet_directory_uri(); ?>/assets/image/car-diagram-1300w.png 1x, <?php echo get_stylesheet_directory_uri(); ?>/image/car-diagram-2600w.png 2x"
+                    alt="A car diagram"
+                    width="1300" height="686" loading="eager"> 
+        </picture>
         </div>
         <div class="content-container desktop">
             <?php if($service_btn_1):?>
